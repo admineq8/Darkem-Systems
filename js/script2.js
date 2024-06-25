@@ -69,7 +69,7 @@ function generatePDF() {
     const img1 = new Image();
     img1.src = 'img/imagen1.png'; // Ruta a la imagen correspondiente
     const img2 = new Image();
-    img2.src = 'img/minuta1.png'; // Ruta a la segunda imagen correspondiente
+    img2.src = 'img/minuta2.png'; // Ruta a la segunda imagen correspondiente
 
     img1.onload = function () {
         doc.addImage(img1, 'PNG', 10, 10, 190, 30); // Ajustar las coordenadas y tamaño según tu imagen
