@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación del Alcance</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Verificación del Alcance</h1>
+        <div class="tabs">
+            <button class="tablink" onclick="openTab(event, 'Formulario')">Formulario y Cálculos</button>
+        </div>
+
+        <div id="Formulario" class="tabcontent">
+            <form id="project-form">
+                <div class="form-group">
+                    <label for="entregable">Entregable</label>
+                    <input type="text" id="entregable" required>
+                </div>
+                <div class="form-group">
+                    <label for="requisito">Requisito</label>
+                    <textarea id="requisito" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="verificacion">Verificación</label>
+                    <textarea id="verificacion" rows="3" required></textarea>
+                </div>
+                <button type="submit">Agregar Verificación</button>
+            </form>
+            <h2>Lista de Verificaciones</h2>
+            <table id="verification-table">
+                <thead>
+                    <tr>
+                        <th>Entregable</th>
+                        <th>Requisito</th>
+                        <th>Verificación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <h2>Total Verificaciones</h2>
+            <p id="total-verifications">0</p>
+            <button onclick="generatePDF()">Generar PDF</button>
+        </div>
+    </div>
+    <script src="js/script6.js"></script>
+</body>
+</html>
