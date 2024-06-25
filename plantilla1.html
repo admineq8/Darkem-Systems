@@ -3,39 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan Operativo</title>
+    <title>Plan Operativo - Plantilla 1</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Plan Operativo</h1>
+        <h1>Plan Operativo - Plantilla 1</h1>
         <div class="tabs">
             <button class="tablink" onclick="openTab(event, 'Formulario')">Formulario y Cálculos</button>
+            <button class="tablink" onclick="openTab(event, 'Historial')">Historial de Cálculos</button>
+            <button class="tablink" onclick="openTab(event, 'Cronograma')">Cronograma de Actividades</button>
         </div>
 
         <div id="Formulario" class="tabcontent">
             <form id="project-form">
                 <div class="form-group">
-                    <label for="tecnologia">Tecnología</label>
-                    <input type="text" id="tecnologia" required>
+                    <label for="concepto">Tecnología</label>
+                    <input type="text" id="concepto" required>
                 </div>
                 <div class="form-group">
-                    <label for="operativa">Operativa</label>
-                    <input type="text" id="operativa" required>
+                    <label for="tiempo">Operativa</label>
+                    <input type="text" id="tiempo" required>
                 </div>
                 <div class="form-group">
-                    <label for="rh">R.H</label>
-                    <input type="text" id="rh" required>
+                    <label for="recurso">R.H</label>
+                    <input type="text" id="recurso" required>
                 </div>
                 <div class="form-group">
-                    <label for="finanzas">Finanzas</label>
-                    <input type="text" id="finanzas" required>
+                    <label for="responsable">Finanzas</label>
+                    <input type="text" id="responsable" required>
                 </div>
                 <div class="form-group">
-                    <label for="comercial">Comercial</label>
-                    <input type="text" id="comercial" required>
+                    <label for="avance">Comercial</label>
+                    <input type="text" id="avance" required>
                 </div>
                 <button type="submit">Agregar Actividad</button>
             </form>
