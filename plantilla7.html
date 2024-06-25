@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control del Alcance - Plantilla 7</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Control del Alcance</h1>
+        <div class="tabs">
+            <button class="tablink" onclick="openTab(event, 'Formulario')">Formulario y Cálculos</button>
+        </div>
+
+        <div id="Formulario" class="tabcontent">
+            <form id="project-form">
+                <div class="form-group">
+                    <label for="entregable">Entregable del Proyecto</label>
+                    <input type="text" id="entregable" required>
+                </div>
+                <div class="form-group">
+                    <label for="estructura">Estructura de Desglose del Trabajo</label>
+                    <textarea id="estructura" rows="5" required></textarea>
+                </div>
+                <button type="submit">Agregar Control</button>
+            </form>
+            <h2>Lista de Controles</h2>
+            <table id="control-table">
+                <thead>
+                    <tr>
+                        <th>Entregable del Proyecto</th>
+                        <th>Estructura de Desglose del Trabajo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <h2>Total Controles</h2>
+            <p id="total-controls">0</p>
+            <button onclick="generatePDF()">Generar PDF</button>
+        </div>
+    </div>
+    <script src="js/script7.js"></script>
+</body>
+</html>
