@@ -3,6 +3,7 @@ document.getElementById('project-form').addEventListener('submit', addActivity);
 let totalCost = 0;
 let costHistory = [];
 let schedule = {};
+const presupuestoInicial = 501830; // Presupuesto inicial definido
 
 function addActivity(e) {
     e.preventDefault();
@@ -30,12 +31,9 @@ function addActivity(e) {
         costo: costo
     });
 
-    // Actualizar presupuesto restante
-    const presupuesto = 501830; // Presupuesto definido
-    const presupuestoRestante = presupuesto - totalCost;
-
-    // Mostrar presupuesto restante (puedes hacerlo como prefieras, aquí como ejemplo se imprime en consola)
-    console.log('Presupuesto Restante:', presupuestoRestante);
+    // Calcular presupuesto restante
+    const presupuestoRestante = presupuestoInicial - totalCost;
+    document.getElementById('presupuesto-restante').textContent = `$${presupuestoRestante}`;
 
     document.getElementById('project-form').reset();
 }
@@ -67,9 +65,9 @@ function generatePDF() {
     const doc = new jsPDF();
 
     const img1 = new Image();
-    img1.src = 'img/imagen1.png'; // Ruta a la imagen correspondiente
+    img1.src = 'img/imagen1.png'; // Ruta a la primera imagen correspondiente
     const img2 = new Image();
-    img2.src = 'img/minuta2.png'; // Ruta a la segunda imagen correspondiente
+    img2.src = 'img/minuta2.png'; // Ruta a la segunda imagen correspondiente (minuta2.png)
 
     img1.onload = function () {
         doc.addImage(img1, 'PNG', 10, 10, 190, 30); // Ajustar las coordenadas y tamaño según tu imagen
@@ -106,7 +104,7 @@ function generatePDF() {
         });
 
         img2.onload = function () {
-            doc.addImage(img2, 'PNG', 10, doc.lastAutoTable.finalY + 10, 190, 30); // Añadimos la segunda imagen debajo de la tabla
+            doc.addImage(img2, 'PNG', 10, doc.lastAutoTable.finalY + 10, 190, 60); // Ajustamos el alto de la segunda imagen
             doc.save('plan_comercializacion.pdf');
         };
     };
