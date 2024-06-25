@@ -7,11 +7,11 @@ let schedule = {};
 function addActivity(e) {
     e.preventDefault();
 
-    const tecnologia = document.getElementById('tecnologia').value;
-    const operativa = document.getElementById('operativa').value;
-    const rh = document.getElementById('rh').value;
-    const finanzas = document.getElementById('finanzas').value;
-    const comercial = document.getElementById('comercial').value;
+    const tecnologia = document.getElementById('concepto').value;
+    const operativa = document.getElementById('tiempo').value;
+    const rh = document.getElementById('recurso').value;
+    const finanzas = document.getElementById('responsable').value;
+    const comercial = document.getElementById('avance').value;
 
     const table = document.getElementById('activity-table').getElementsByTagName('tbody')[0];
     const newRow = table.insertRow();
@@ -24,45 +24,14 @@ function addActivity(e) {
         <td>${comercial}</td>
     `;
 
-    // Suponiendo que los costos se suman según los valores de los campos
-    const recurso = parseFloat(tecnologia) + parseFloat(operativa) + parseFloat(rh) + parseFloat(finanzas) + parseFloat(comercial);
-    totalCost += recurso;
-    document.getElementById('total-cost').textContent = totalCost;
+    // No se añaden costos ni historial en esta plantilla, solo se muestra la información
 
-    costHistory.push(totalCost);
-    updateCostHistory();
-
-    if (!schedule[comercial]) {
-        schedule[comercial] = [];
+    if (!schedule['Responsable']) {
+        schedule['Responsable'] = [];
     }
-    schedule[comercial].push(tecnologia);
-    updateSchedule();
+    schedule['Responsable'].push(tecnologia); // Ajustar según la lógica deseada para el cronograma
 
     document.getElementById('project-form').reset();
-}
-
-function updateCostHistory() {
-    const historyList = document.getElementById('cost-history');
-    historyList.innerHTML = '';
-
-    costHistory.forEach((cost, index) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `Costo total después de la actividad ${index + 1}: $${cost}`;
-        historyList.appendChild(listItem);
-    });
-}
-
-function updateSchedule() {
-    const scheduleTable = document.getElementById('schedule-table').getElementsByTagName('tbody')[0];
-    scheduleTable.innerHTML = '';
-
-    for (const [responsable, actividades] of Object.entries(schedule)) {
-        const newRow = scheduleTable.insertRow();
-        newRow.innerHTML = `
-            <td>${responsable}</td>
-            <td>${actividades.join(', ')}</td>
-        `;
-    }
 }
 
 function openTab(evt, tabName) {
@@ -92,18 +61,15 @@ function generatePDF() {
     const doc = new jsPDF();
 
     const img1 = new Image();
-    img1.src = 'img/imagen1.png'; // Reemplaza con la ruta a tu imagen PNG
+    img1.src = 'img/imagen1.png'; // Reemplazar con la ruta a tu imagen PNG
     const img2 = new Image();
-    img2.src = 'img/minuta1.png'; // Reemplaza con la ruta a tu segunda imagen PNG
+    img2.src = 'img/minuta1.png'; // Reemplazar con la ruta a tu segunda imagen PNG
 
     img1.onload = function () {
-        doc.addImage(img1, 'PNG', 10, 10, 190, 30); // Ajusta las coordenadas y tamaño según tu imagen
+        doc.addImage(img1, 'PNG', 10, 10, 190, 30); // Ajustar las coordenadas y tamaño según tu imagen
 
         doc.setFontSize(12);
-        doc.text('Plan Operativo', 10, 50);
-
-        const totalCost = document.getElementById('total-cost').textContent;
-        doc.text(`Total Costos: $${totalCost}`, 10, 60);
+        doc.text('Plan Operativo', 10, 50); // Encabezado ajustado según la plantilla
 
         const activityTable = document.getElementById('activity-table');
         const rows = activityTable.getElementsByTagName('tr');
@@ -127,12 +93,15 @@ function generatePDF() {
                 fillColor: [255, 255, 255], // Color blanco para las celdas
                 textColor: [0, 0, 0], // Color negro para el texto
             },
+            headStyles: {
+                fillColor: [255, 165, 0], // Color naranja más oscuro para el encabezado
+                textColor: [255, 255, 255], // Color blanco para el texto del encabezado
+            }
         });
 
         img2.onload = function () {
-            doc.addImage(img2, 'PNG', 10, doc.lastAutoTable.finalY + 10, 190, 30); // Ajusta las coordenadas y tamaño según tu imagen
-            doc.save('Plan_Operativo.pdf');
-        }
-    }
+            doc.addImage(img2, 'PNG', 10, doc.lastAutoTable.finalY + 10, 190, 30); // Añadimos la segunda imagen debajo de la tabla
+            doc.save('plan_operativo.pdf');
+        };
+    };
 }
-
