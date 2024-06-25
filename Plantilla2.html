@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Comercialización</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Plan de Comercialización</h1>
+        <h2>Presupuesto: $501,830</h2>
+        <div class="tabs">
+            <button class="tablink" onclick="openTab(event, 'Formulario')">Formulario y Cálculos</button>
+            <button class="tablink" onclick="openTab(event, 'Historial')">Historial de Cálculos</button>
+            <button class="tablink" onclick="openTab(event, 'Cronograma')">Cronograma de Actividades</button>
+        </div>
+
+        <div id="Formulario" class="tabcontent">
+            <form id="project-form">
+                <div class="form-group">
+                    <label for="actividad">Actividad</label>
+                    <input type="text" id="actividad" required>
+                </div>
+                <div class="form-group">
+                    <label for="tiempo">Tiempo</label>
+                    <input type="text" id="tiempo" required>
+                </div>
+                <div class="form-group">
+                    <label for="recurso">Recurso</label>
+                    <input type="text" id="recurso" required>
+                </div>
+                <div class="form-group">
+                    <label for="costo">Costo</label>
+                    <input type="number" id="costo" required>
+                </div>
+                <button type="submit">Agregar Actividad</button>
+            </form>
+            <h2>Lista de Actividades</h2>
+            <table id="activity-table">
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Tiempo</th>
+                        <th>Recurso</th>
+                        <th>Costo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <h2>Total Costos</h2>
+            <p id="total-cost">0</p>
+            <button onclick="generatePDF()">Generar PDF</button>
+        </div>
+
+        <div id="Historial" class="tabcontent">
+            <h2>Historial de Costos</h2>
+            <ul id="cost-history">
+            </ul>
+        </div>
+
+        <div id="Cronograma" class="tabcontent">
+            <h2>Cronograma de Actividades</h2>
+            <table id="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Responsable</th>
+                        <th>Actividades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="js/script2.js"></script>
+</body>
+</html>
