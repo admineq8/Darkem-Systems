@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Requisitos - Plantilla 8</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Requisitos</h1>
+        <div class="tabs">
+            <button class="tablink" onclick="openTab(event, 'Formulario')">Formulario y Cálculos</button>
+        </div>
+
+        <div id="Formulario" class="tabcontent">
+            <form id="project-form">
+                <div class="form-group">
+                    <label for="clasificacion">Clasificación</label>
+                    <input type="text" id="clasificacion" required>
+                </div>
+                <div class="form-group">
+                    <label for="requisito">Requisito</label>
+                    <textarea id="requisito" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="interesado">Interesado</label>
+                    <input type="text" id="interesado" required>
+                </div>
+                <div class="form-group">
+                    <label for="nivel">Nivel</label>
+                    <select id="nivel" required>
+                        <option value="">Seleccione el Nivel</option>
+                        <option value="Alto">Alto</option>
+                        <option value="Medio">Medio</option>
+                        <option value="Bajo">Bajo</option>
+                    </select>
+                </div>
+                <button type="submit">Agregar Requisito</button>
+            </form>
+            <h2>Lista de Requisitos</h2>
+            <table id="requirement-table">
+                <thead>
+                    <tr>
+                        <th>Clasificación</th>
+                        <th>Requisito</th>
+                        <th>Interesado</th>
+                        <th>Nivel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <h2>Total Requisitos</h2>
+            <p id="total-requirements">0</p>
+            <button onclick="generatePDF()">Generar PDF</button>
+        </div>
+    </div>
+    <script src="js/script8.js"></script>
+</body>
+</html>
