@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Acta constitutiva del proyecto</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Plantilla de Acta constitutiva del proyecto</h1>
+        <div class="tabs">
+            <button class="tablink" onclick="openTab(event, 'Formulario')">Formulario y Detalles</button>
+            <button class="tablink" onclick="generatePDF()">Generar PDF</button>
+        </div>
+
+        <div id="Formulario" class="tabcontent">
+            <form id="constitutive-form">
+                <div class="form-group">
+                    <label for="actividad">Actividad</label>
+                    <input type="text" id="actividad" required>
+                </div>
+                <div class="form-group">
+                    <label for="acuerdo">Acuerdo</label>
+                    <input type="text" id="acuerdo" required>
+                </div>
+                <div class="form-group">
+                    <label for="fechaInicio">Fecha de Inicio</label>
+                    <input type="date" id="fechaInicio" required>
+                </div>
+                <div class="form-group">
+                    <label for="fechaTermino">Fecha Termino</label>
+                    <input type="date" id="fechaTermino" required>
+                </div>
+                <div class="form-group">
+                    <label for="responsable">Responsable</label>
+                    <input type="text" id="responsable" required>
+                </div>
+                <button type="submit">Generar Acta Constitutiva</button>
+            </form>
+            <h2>Acta Constitutiva del Proyecto</h2>
+            <div id="constitutive-details">
+                <!-- Los detalles del acta constitutiva se mostrarán aquí -->
+            </div>
+        </div>
+    </div>
+    <script src="js/script_a.js"></script>
+</body>
+</html>
