@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruta Crítica - Plantilla 29</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Ruta Crítica</h1>
+        <div class="tabs">
+            <button class="tablink" onclick="openTab(event, 'Formulario')">Formulario y Cálculos</button>
+        </div>
+
+        <div id="Formulario" class="tabcontent">
+            <form id="project-form">
+                <div class="form-group">
+                    <label for="actividad">Actividad</label>
+                    <input type="text" id="actividad" required>
+                </div>
+                <div class="form-group">
+                    <label for="actividadReal">Actividad Real</label>
+                    <input type="text" id="actividadReal" required>
+                </div>
+                <div class="form-group">
+                    <label for="cumple">Cumple</label>
+                    <input type="text" id="cumple" required>
+                </div>
+                <button type="submit">Agregar Actividad</button>
+            </form>
+            <h2>Lista de Actividades</h2>
+            <table id="activity-table">
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Actividad Real</th>
+                        <th>Cumple</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="js/script29.js"></script>
+</body>
+</html>
