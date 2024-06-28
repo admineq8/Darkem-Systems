@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Gestión de Interesados</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Plantilla de Gestión de Interesados</h1>
+        <div class="tabs">
+            <button class="tablink" onclick="openTab(event, 'Formulario')">Formulario y Detalles</button>
+            <button class="tablink" onclick="generatePDF()">Generar PDF</button>
+        </div>
+
+        <div id="Formulario" class="tabcontent">
+            <form id="stakeholder-form">
+                <div class="form-group">
+                    <label for="interesado">Interesado</label>
+                    <input type="text" id="interesado" required>
+                </div>
+                <div class="form-group">
+                    <label for="poder">Poder / Influencia</label>
+                    <input type="text" id="poder" required>
+                </div>
+                <div class="form-group">
+                    <label for="interes">Interés</label>
+                    <input type="text" id="interes" required>
+                </div>
+                <div class="form-group">
+                    <label for="estrategia">Estrategia</label>
+                    <input type="text" id="estrategia" required>
+                </div>
+                <button type="submit">Generar Gestión de Interesados</button>
+            </form>
+            <h2>Gestión de Interesados</h2>
+            <div id="stakeholder-details">
+                <!-- Los detalles de la gestión de interesados se mostrarán aquí -->
+            </div>
+        </div>
+    </div>
+    <script src="js/scriptb.js"></script>
+</body>
+</html>
