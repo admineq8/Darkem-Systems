@@ -4,7 +4,7 @@ let totalCost = 0;
 
 function addActivity(e) {
     e.preventDefault();
-
+ 
     const actividad = document.getElementById('actividad').value;
     const tiempo = document.getElementById('tiempo').value;
     const costo = parseFloat(document.getElementById('costo').value);
