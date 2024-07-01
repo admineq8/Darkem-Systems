@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programa de Trabajo - Plantilla 23</title>
+    <title>Checklist</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Programa de Trabajo: Checklist de verificación</h1>
+        <h1>Checklist</h1>
         <div class="tabs">
-            <button class="tablink" onclick="openTab(event, 'Formulario')">Formulario y Cálculos</button>
+            <button class="tablink" onclick="openTab(event, 'Formulario')">Formulario y Detalles</button>
+            <button class="tablink" onclick="generatePDF()">Generar PDF</button>
         </div>
 
         <div id="Formulario" class="tabcontent">
-            <form id="project-form">
+            <form id="checklist-form">
                 <div class="form-group">
                     <label for="actividad">Actividad</label>
                     <input type="text" id="actividad" required>
@@ -33,24 +34,12 @@
                     <label for="responsable">Responsable</label>
                     <input type="text" id="responsable" required>
                 </div>
-                <button type="submit">Agregar Actividad</button>
+                <button type="submit">Generar Informe de Checklist</button>
             </form>
-            <h2>Lista de Actividades</h2>
-            <table id="activity-table">
-                <thead>
-                    <tr>
-                        <th>Actividad</th>
-                        <th>Tiempo</th>
-                        <th>Costo</th>
-                        <th>Responsable</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <h2>Total Costo</h2>
-            <p id="total-cost">0</p>
-            <button onclick="generatePDF()">Generar PDF</button>
+            <h2>Detalles del Checklist</h2>
+            <div id="checklist-details">
+                <!-- Los detalles del checklist se mostrarán aquí -->
+            </div>
         </div>
     </div>
     <script src="js/script23.js"></script>
