@@ -1,29 +1,21 @@
-document.getElementById('project-form').addEventListener('submit', addActivity);
+document.getElementById('seguimiento-form').addEventListener('submit', generateTrackingReport);
 
-let totalCost = 0;
-
-function addActivity(e) {
+function generateTrackingReport(e) {
     e.preventDefault();
 
     const actividad = document.getElementById('actividad').value;
     const tiempo = document.getElementById('tiempo').value;
-    const costo = parseFloat(document.getElementById('costo').value);
+    const costo = document.getElementById('costo').value;
     const responsable = document.getElementById('responsable').value;
 
-    const table = document.getElementById('activity-table').getElementsByTagName('tbody')[0];
-    const newRow = table.insertRow();
-
-    newRow.innerHTML = `
-        <td>${actividad}</td>
-        <td>${tiempo}</td>
-        <td>${costo}</td>
-        <td>${responsable}</td>
+    const trackingDetails = `
+        <p><strong>Actividad:</strong> ${actividad}</p>
+        <p><strong>Tiempo:</strong> ${tiempo}</p>
+        <p><strong>Costo:</strong> ${costo}</p>
+        <p><strong>Responsable:</strong> ${responsable}</p>
     `;
 
-    totalCost += costo;
-    document.getElementById('total-cost').textContent = totalCost;
-
-    document.getElementById('project-form').reset();
+    document.getElementById('seguimiento-details').innerHTML = trackingDetails;
 }
 
 function openTab(evt, tabName) {
@@ -36,7 +28,7 @@ function openTab(evt, tabName) {
 
     tablinks = document.getElementsByClassName('tablink');
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i.className = tablinks[i.className.replace(' active', '');
+        tablinks[i].className = tablinks[i].className.replace(' active', '');
     }
 
     document.getElementById(tabName).style.display = 'block';
@@ -51,51 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function generatePDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
-
-    const img1 = new Image();
-    img1.src = 'img/imagen1.png'; // Ruta a la primera imagen correspondiente
-    const img25 = new Image();
-    img25.src = 'img/minuta25.png'; // Ruta a la nueva segunda imagen correspondiente (minuta25.png)
-
-    img1.onload = function () {
-        doc.addImage(img1, 'PNG', 10, 10, 190, 30); // Ajustar las coordenadas y tamaño según tu imagen
-
-        doc.setFontSize(12);
-        doc.text('Control de Seguimiento', 10, 50); // Encabezado ajustado según la plantilla
-
-        const activityTable = document.getElementById('activity-table');
-        const rows = activityTable.getElementsByTagName('tr');
-        const data = [];
-
-        for (let i = 1; i < rows.length; i++) { // Saltamos la primera fila de encabezado
-            const cols = rows[i.getElementsByTagName('td');
-            const rowData = [];
-            for (let j = 0; j < cols.length; j++) {
-                rowData.push(cols[j.innerText);
-            }
-            data.push(rowData);
-        }
-
-        doc.autoTable({
-            head: [
-                ['Actividad', 'Tiempo', 'Costo', 'Responsable']
-            ],
-            body: data,
-            startY: 70,
-            theme: 'grid',
-            styles: {
-                fillColor: [255, 255, 255], // Color blanco para las celdas
-                textColor: [0, 0, 0], // Color negro para el texto
-            },
-            headStyles: {
-                fillColor: [255, 165, 0], // Color naranja más oscuro para el encabezado
-                textColor: [255, 255, 255], // Color blanco para el texto del encabezado
-            }
-        });
-
-        img25.onload = function () {
-            doc.addImage(img25, 'PNG', 10, doc.lastAutoTable.finalY + 10, 190, 60); // Ajustamos el alto de la segunda imagen
-            doc.save('control_seguimiento.pdf');
-        };
-    };
+    doc.text("Control de Seguimiento", 10, 10);
+    doc.text(document.getElementById('seguimiento-details').innerText, 10, 20);
+    doc.save('Control_de_Seguimiento.pdf');
 }
